@@ -100,6 +100,8 @@ namespace pryLujan_IEFI
         private void frmLogIn_Load(object sender, EventArgs e)
         {
             pbUsuario.BorderStyle = BorderStyle.None;
+
+
         }
     }
     }

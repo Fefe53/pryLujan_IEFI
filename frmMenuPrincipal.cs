@@ -28,5 +28,10 @@ namespace pryLujan_IEFI
             v.Show();
             this.Hide();
         }
+
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
