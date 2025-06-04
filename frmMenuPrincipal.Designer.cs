@@ -36,9 +36,10 @@
             this.auditoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dtpHorario = new System.Windows.Forms.DateTimePicker();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.eliminarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -77,10 +78,13 @@
             // 
             // usuariosToolStripMenuItem
             // 
+            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eliminarUsuarioToolStripMenuItem});
             this.usuariosToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // auditoriaToolStripMenuItem
             // 
@@ -96,6 +100,7 @@
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(102, 26);
             this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -106,6 +111,12 @@
             this.statusStrip1.Size = new System.Drawing.Size(896, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(112, 17);
+            this.toolStripStatusLabel.Text = "toolStripStatusLabel";
             // 
             // dtpHorario
             // 
@@ -129,11 +140,13 @@
             this.pbLogo.TabIndex = 3;
             this.pbLogo.TabStop = false;
             // 
-            // toolStripStatusLabel
+            // eliminarUsuarioToolStripMenuItem
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(112, 17);
-            this.toolStripStatusLabel.Text = "toolStripStatusLabel";
+            this.eliminarUsuarioToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
+            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
+            this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar Usuario";
+            this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -171,5 +184,6 @@
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.ToolStripMenuItem eliminarUsuarioToolStripMenuItem;
     }
 }
