@@ -28,5 +28,29 @@ namespace pryLujan_IEFI
             v.Show();
             this.Hide();
         }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void eliminarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEliminarUsuario v = new frmEliminarUsuario();
+            v.Show();
+            this.Hide();
+        }
+
+        private void agregarOModificarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsuarios usuarios = new frmUsuarios();
+            usuarios.Show();
+            this.Hide();
+        }
     }
 }
