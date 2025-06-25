@@ -52,5 +52,12 @@ namespace pryLujan_IEFI
             usuarios.Show();
             this.Hide();
         }
+
+        private void agregarProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAgregarProductos productos = new frmAgregarProductos();
+            productos.Show();
+            this.Hide();
+        }
     }
 }

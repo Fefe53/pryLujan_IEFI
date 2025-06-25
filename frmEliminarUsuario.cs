@@ -27,7 +27,7 @@ namespace pryLujan_IEFI
             // Inicializar la conexión
             conexion = new OleDbConnection(cadenaConexion);
             conexion.Open();
-            CargarProductos();
+            CargarUsuarios();
             CargarCodigosEnComboBox();
         }
 
@@ -35,14 +35,14 @@ namespace pryLujan_IEFI
         {
             if (cmbIDUsuario.SelectedItem == null)
             {
-                MessageBox.Show("Seleccione un código de producto para eliminar.");
+                MessageBox.Show("Seleccione un código de usuario para eliminar.");
                 return;
             }
 
             string idUsuario = cmbIDUsuario.SelectedItem.ToString();
 
             DialogResult confirmacion = MessageBox.Show(
-                "¿Está seguro que desea eliminar el producto con Id de Usuario " + idUsuario + "?",
+                "¿Está seguro que desea eliminar el usuario " + idUsuario + "?",
                 "Confirmar eliminación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
@@ -65,13 +65,13 @@ namespace pryLujan_IEFI
 
                         if (filasAfectadas > 0)
                         {
-                            MessageBox.Show("Producto eliminado correctamente.");
-                            CargarProductos();              // Recargar el DataGridView
+                            MessageBox.Show("Usuario eliminado correctamente.");
+                            CargarUsuarios();              // Recargar el DataGridView
                             CargarCodigosEnComboBox();  // Recargar el ComboBox
                         }
                         else
                         {
-                            MessageBox.Show("No se encontró el producto.");
+                            MessageBox.Show("No se encontró el usuario.");
                         }
                     }
                 }
@@ -82,7 +82,7 @@ namespace pryLujan_IEFI
             }
 
         }
-        private void CargarProductos()
+        private void CargarUsuarios()
         {
             string conexionString = @"Provider=Microsoft.JET.OLEDB.4.0;Data Source=BDRRHH.mdb;";
             using (OleDbConnection conexion = new OleDbConnection(conexionString))
@@ -116,6 +116,13 @@ namespace pryLujan_IEFI
             }
 
             lector.Close();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            frmMenuPrincipal v = new frmMenuPrincipal();
+            v.Show();
+            this.Hide();
         }
     }
 }
