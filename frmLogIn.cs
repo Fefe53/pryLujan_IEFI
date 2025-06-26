@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.OleDb;
 
 namespace pryLujan_IEFI
 {
@@ -60,7 +61,7 @@ namespace pryLujan_IEFI
                         }
                         else
                         {
-                            MessageBox.Show("Usuario o contraseña incorrectos");
+                            MessageBox.Show("Usuario o contraseña incorrectos");return;
                         }
                     }
 
@@ -70,25 +71,35 @@ namespace pryLujan_IEFI
                         string consultaNombre = "SELECT [Nombre Completo] FROM Usuarios WHERE IdUsuario = ?";
                         using (OleDbCommand comandoNombre = new OleDbCommand(consultaNombre, conexion))
                         {
-                            comandoNombre.Parameters.AddWithValue("?", idUsuario); 
+                            comandoNombre.Parameters.AddWithValue("?", idUsuario);
                             object resultado = comandoNombre.ExecuteScalar();
 
                             if (resultado != null)
                             {
                                 string nombreCompleto = resultado.ToString();
 
-                                frmMenuPrincipal principal = new frmMenuPrincipal();
-                                principal.NombreUsuario = nombreCompleto;
-                                principal.Show();
-                                this.Hide();
-                                
+                                // Obtener también la CATEGORÍA
+                                string consultaCategoria = "SELECT [CategoríaRol] FROM Usuarios WHERE IdUsuario = ?";
+                                using (OleDbCommand comandoCategoria = new OleDbCommand(consultaCategoria, conexion))
+                                {
+                                    comandoCategoria.Parameters.AddWithValue("?", idUsuario);
+                                    object catResult = comandoCategoria.ExecuteScalar();
+
+                                    string categoria = (catResult != null) ? catResult.ToString() : "";
+
+                                    // Ahora abrimos el menú y pasamos ambos valores
+                                    frmMenuPrincipal principal = new frmMenuPrincipal();
+                                    principal.NombreUsuario = nombreCompleto;
+                                    principal.CategoriaUsuario = categoria;
+                                    principal.Show();
+                                    this.Hide();
+                                }
                             }
                             else
                             {
                                 MessageBox.Show("Usuario autenticado, pero no se encontró su nombre completo.");
                             }
-                        }
-                    }
+                        }   }
                 }
                 catch (Exception ex)
                 {
@@ -100,6 +111,11 @@ namespace pryLujan_IEFI
         private void frmLogIn_Load(object sender, EventArgs e)
         {
             pbUsuario.BorderStyle = BorderStyle.None;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
     }
