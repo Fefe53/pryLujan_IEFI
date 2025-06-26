@@ -17,10 +17,11 @@ namespace pryLujan_IEFI
             InitializeComponent();
         }
         clsClase x = new clsClase();
+        public string CategoriaUsuario { get; set; }
         public string NombreUsuario
         {
             get { return toolStripStatusLabel.Text; }
-            set { toolStripStatusLabel.Text = "Bienvenido, " + value; }
+            set { toolStripStatusLabel.Text = "" + value; }
         }
         private void auditoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -58,6 +59,32 @@ namespace pryLujan_IEFI
             frmAgregarProductos productos = new frmAgregarProductos();
             productos.Show();
             this.Hide();
+        }
+
+        private void buscarProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBuscarProductos busqueda = new frmBuscarProductos();
+            busqueda.Show();
+            this.Hide();
+        }
+
+        private void stockTotalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmStock stock = new frmStock();
+            stock.Show();
+            this.Hide();
+        }
+        
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+            // Controlar acceso según categoría
+            if (CategoriaUsuario != "Administrador")
+            {
+                menuAdministrar.Enabled = false; // o Visible = false;
+            }
+
+            // Opcional: mostrar nombre del usuario
+            toolStripStatusLabel.Text = $"Bienvenido: {NombreUsuario} ({CategoriaUsuario})";
         }
     }
 }

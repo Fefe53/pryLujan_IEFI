@@ -89,6 +89,11 @@ namespace pryLujan_IEFI
             // Inicializar la conexión
             conexion = new OleDbConnection(cadenaConexion);
 
+            dgvUsuarios.ColumnCount = 3;
+            dgvUsuarios.Columns[0].Name = "IdUsuario";
+            dgvUsuarios.Columns[1].Name = "Nombre Completo";
+            dgvUsuarios.Columns[2].Name = "CategoríaRol";
+
             // Abrir la conexión a la base de datos
             try
             {
@@ -99,13 +104,8 @@ namespace pryLujan_IEFI
             {
                 MessageBox.Show("Error al conectar: " + ex.Message);
             }
-            dgvUsuarios.ColumnCount = 3;
-            dgvUsuarios.Columns[0].Name = "IdUsuario";
-            dgvUsuarios.Columns[1].Name = "Nombre Completo";
-            dgvUsuarios.Columns[2].Name = "CategoríaRol";
-            
 
-            CargarUsuarios();
+            
         }
         private void CargarUsuarios()
         {
@@ -152,7 +152,7 @@ namespace pryLujan_IEFI
                 return;
             }
 
-            string sql = "UPDATE Usuarios SET NOMBRECOMPLETO = ?, [CATEGORÍAROL] = ? WHERE IDUSUARIO = ?";
+            string sql = "UPDATE Usuarios SET [Nombre Completo] = ?, CategoríaRol = ? WHERE IdUsuario = ?";
 
             try
             {
@@ -192,10 +192,9 @@ namespace pryLujan_IEFI
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow fila = dgvUsuarios.Rows[e.RowIndex];
-                txtIdUsuario.Text = fila.Cells["IDUSUARIO"].Value.ToString();
-                txtNombre.Text = fila.Cells["NOMBRECOMPLETO"].Value.ToString();
-                txtCategoria.Text = fila.Cells["CATEGORÍAROL"].Value.ToString();
-                
+                txtIdUsuario.Text = fila.Cells["IdUsuario"].Value.ToString();
+                txtNombre.Text = fila.Cells["Nombre Completo"].Value.ToString();
+                txtCategoria.Text = fila.Cells["CategoríaRol"].Value.ToString();
             }
         }
 
